@@ -108,6 +108,15 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            // dummy key
+            storeFile file("my-release-key.keystore")
+            storePassword "abcdef12"
+            keyAlias "exodus_self_signed"
+            keyPassword "abcdef12"
+        }
+    }
     splits {
         abi {
             reset()
@@ -120,6 +129,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
